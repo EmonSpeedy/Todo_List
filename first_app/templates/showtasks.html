@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block content %}
+<div style="width: 80%; margin: auto">
+  <h1>Tasks are available</h1>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in task %}
+      <tr>
+        <td>{{t.id}}</td>
+        <td>{{t.title}}</td>
+        <td>{{t.description}}</td>
+        <td>{% if t.is_completed %} 
+           Complete 
+          {% else %}
+          Incomplete
+          {% endif %}
+        </td>
+        <td>
+          <a class="btn btn-warning btn-sm" href="{% url 'edittask' id=t.id %}"
+            >Edit</a
+          >
+          <a class="btn btn-danger btn-sm" href="{% url 'deletetask' id=t.id %}"
+            >Delete</a
+          >
+          <a class="btn btn-success btn-sm" href="{% url 'completetask' id=t.id %}">Complete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
