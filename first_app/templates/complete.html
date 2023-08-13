@@ -1,4 +1,25 @@
-{% extends 'base.html' %}
-{% block content %}
-<h1>Congratulations! <br>Succesfully Task completed!</h1>
+{% extends 'base.html' %} {% block content %}
+<div style="width: 80%; margin: auto">
+  <h1>These tasks are completed</h1>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in task %}
+      <tr>
+        <td>{{t.title}}</td>
+        <td>{{t.description}}</td>
+        <td>
+          {% if t.is_completed %} Complete {% else %} Incomplete {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}

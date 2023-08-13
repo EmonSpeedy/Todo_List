@@ -7,3 +7,10 @@ class TaskModel(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=80)
     is_completed = models.BooleanField(default=False)
+    
+# class CompleteModel(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     title = models.CharField(max_length=20)
+#     description = models.CharField(max_length=80)
+#     is_completed = models.BooleanField(default=False)
+        

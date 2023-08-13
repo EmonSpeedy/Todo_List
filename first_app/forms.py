@@ -4,4 +4,9 @@ from . models import TaskModel
 class TaskForm(forms.ModelForm):
     class Meta:
         model = TaskModel
-        fields = ['id', 'title', 'description']
+        fields = ['title', 'description']
+        
+# class CompleteForm(forms.ModelForm):
+#     class Meta:
+#         model = CompleteModel
+#         fields = '__all__'

@@ -11,12 +11,13 @@ def addtask(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
+            return redirect('showtasks')
     else:
         form = TaskForm()
     return render(request, 'addtask.html', {'form' : form})
 
 def showtasks(request):
-    task = TaskModel.objects.all()
+    task = TaskModel.objects.filter(is_completed=False)
     return render(request, 'showtasks.html', {'task' : task})
 
 def edittask(request, id):
@@ -44,5 +45,6 @@ def completetask(request, id):
     return redirect('complete')
             
 def completion(request):
-    return render(request, 'complete.html')
+    task = TaskModel.objects.filter(is_completed=True)
+    return render(request, 'complete.html', {'task' : task})
     
